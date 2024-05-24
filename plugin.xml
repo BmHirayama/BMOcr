@@ -11,7 +11,7 @@
 
   <asset src="www/ocr.js" target="js/ocr.js"/>
 
-  <js-module src="www/ocr.js" name="OCR">
+  <js-module src="www/ocr.js" name="BmOcrPlugin">
     <clobbers target="ocr" />
   </js-module>
 
