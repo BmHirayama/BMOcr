@@ -1,7 +1,7 @@
 function BMOcr() {}
 
 // Reader
-BMOcr.prototype.showToast = function (callback) {
+BMOcr.prototype.startOCR = function (callback) {
     cordova.exec(function(result){ callback(result); }, function(err){}, "Plugin", "startOCR", []);
 }
 
