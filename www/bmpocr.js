@@ -6,7 +6,7 @@ OCRPlugin.prototype.startOCR = function (callback) {
 }
 
 OCRPlugin.install = function() {
-  if (! window.bmpocr) {
+  if (!window.bmpocr) {
     window.bmpocr = {};
   }
   window.bmpocr = new OCRPlugin();
