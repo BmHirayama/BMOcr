@@ -1,8 +1,15 @@
-var OCRPluginExport = {};
+function BMOcr() {}
 
-// Public
-OCRPluginExport.startOCR = function(callback) {
-    cordova.exec(function(result){callback(result);}, function(err){}, "Plugin", "startOCR", []);
+// Reader
+BMOcr.prototype.showToast = function (callback) {
+    cordova.exec(function(result){ callback(result); }, function(err){}, "Plugin", "startOCR", []);
+}
+
+BMOcr.install = function() {
+  if (!window.plugins) {
+    window.plugins = {};
+  }
+  window.plugins.bmpocr = new BMOcr();
+  return window.plugins.bmpocr;
 };
-
-module.exports = OCRPluginExport;
+cordova.addConstructor(BMOcr.install);
