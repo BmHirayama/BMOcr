@@ -1,9 +1,9 @@
 {
-  "name": "cordova-plugin-bmpoocr",
+  "name": "cordova-plugin-bmpocr",
   "version": "1.0.0",
   "description": "plugin",
   "cordova": {
-    "id": "cordova-plugin-bmpoocr",
+    "id": "cordova-plugin-bmpocr",
     "platforms": [
       "android",
       "ios"

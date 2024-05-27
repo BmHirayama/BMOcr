@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-        id="cordova-plugin-bmpoocr"
+        id="cordova-plugin-bmpocr"
         version="1.0.0">
 
   <name>OCRPlugin</name>
@@ -9,10 +9,10 @@
     <engine name="cordova" version=">=3.4.0"/>
   </engines>
 
-  <asset src="www/bmpoocr.js" target="js/bmpoocr.js"/>
+  <asset src="www/bmpocr.js" target="js/bmpocr.js"/>
 
-  <js-module src="www/bmpoocr.js" name="OCRPlugin">
-    <clobbers target="bmpoocr" />
+  <js-module src="www/bmpocr.js" name="OCRPlugin">
+    <clobbers target="bmpocr" />
   </js-module>
 
   <platform name="android">
