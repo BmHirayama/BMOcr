@@ -1,15 +1,15 @@
-function BMOcr() {};
+function BMOcrPlugin() {}
 
 // Reader
-BMOcr.prototype.startOCR = function (callback) {
-    cordova.exec(function(result){ callback(result); }, function(err){}, "Plugin", "startOCR", []);
-};
+BMOcrPlugin.prototype.startOCR = function (callback) {
+	cordova.exec(function(result){ callback(result); }, function(err){}, "Plugin", "startOCR", []);
+}
 
-BMOcr.install = function() {
+BMOcrPlugin.install = function() {
   if (!window.plugins) {
     window.plugins = {};
   }
-  window.plugins.bmpocr = new BMOcr();
+  window.plugins.bmpocr = new BMOcrPlugin();
   return window.plugins.bmpocr;
 };
-cordova.addConstructor(BMOcr.install);
+cordova.addConstructor(BMOcrPlugin.install);
