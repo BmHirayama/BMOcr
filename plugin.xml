@@ -12,7 +12,7 @@
   <asset src="www/bmpocr.js" target="js/bmpocr.js"/>
 
   <js-module src="www/bmpocr.js" name="OCRPlugin">
-    <clobbers target="bmpocr" />
+    <clobbers target="OCRPlugin" />
   </js-module>
 
   <platform name="android">
