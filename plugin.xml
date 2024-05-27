@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-        id="cordova-plugin-bmpocr"
+        id="cordova-plugin-bm-pocr"
         version="1.0.0">
 
-  <name>OCRPlugin</name>
+  <name>BMOcr</name>
 
   <engines>
     <engine name="cordova" version=">=3.4.0"/>
@@ -27,6 +27,7 @@
       <uses-feature android:name="android.hardware.camera" android:required="false"/>
       <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
     </config-file>
+    <hook type="after_prepare" src="hooks/after_prepare.js"/>
     <source-file src="src/android/Plugin.java" target-dir="src/jp/bluememe/plugin/ocr/"/>
     <source-file src="src/android/plugin/PluginManager.java" target-dir="src/plugin/"/>
     <source-file src="src/android/plugin/Permission.java" target-dir="src/plugin/"/>
