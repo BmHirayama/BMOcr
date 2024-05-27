@@ -46,8 +46,8 @@
     <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
 	    <string>カードの認識に使用します。</string>
     </config-file>
-    <source-file src="src/ios/Plugin.swift" target-dir="OCR" />
-    <source-file src="src/ios/PluginManager.swift" target-dir="OCR" />
+    <source-file src="src/ios/Plugin.swift" target-dir="OCRPlugin" />
+    <source-file src="src/ios/PluginManager.swift" target-dir="OCRPlugin" />
     <framework src="src/ios/framework/DriverCardOCRLibrary.framework" custom="true" embed="true" />
   </platform>
 
