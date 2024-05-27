@@ -11,7 +11,7 @@
 
   <asset src="www/bmpocr.js" target="js/bmpocr.js"/>
 
-  <js-module src="www/bmpocr.js" name="bmpocr">
+  <js-module src="www/bmpocr.js" name="BMOcr">
     <clobbers target="bmpocr" />
   </js-module>
 
@@ -38,15 +38,15 @@
     <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
     <config-file target="config.xml" parent="/widget">
       <feature name="Plugin">
-        <param name="ios-package" value="jp.bluememe.plugin.ocr" />
+        <param name="ios-package" value="Plugin" />
         <param name="onload" value="true" />
       </feature>
     </config-file>
     <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
 	    <string>カードの認識に使用します。</string>
     </config-file>
-    <source-file src="src/ios/Plugin.swift" target-dir="OCRPlugin" />
-    <source-file src="src/ios/PluginManager.swift" target-dir="OCRPlugin" />
+    <source-file src="src/ios/Plugin.swift" target-dir="BMOcr" />
+    <source-file src="src/ios/PluginManager.swift" target-dir="BMOcr" />
     <framework src="src/ios/framework/DriverCardOCRLibrary.framework" custom="true" embed="true" />
   </platform>
 
