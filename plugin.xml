@@ -27,7 +27,6 @@
       <uses-feature android:name="android.hardware.camera" android:required="false"/>
       <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
     </config-file>
-    <hook type="after_prepare" src="hooks/after_prepare.js"/>
     <source-file src="src/android/Plugin.java" target-dir="src/jp/bluememe/plugin/ocr/"/>
     <source-file src="src/android/plugin/PluginManager.java" target-dir="src/plugin/"/>
     <source-file src="src/android/plugin/Permission.java" target-dir="src/plugin/"/>
