@@ -1,16 +1,9 @@
-function OCRPlugin() {}
+var exec = require('cordova/exec');
+var OCRPluginExport = {};
 
-// Reader
-OCRPlugin.prototype.startOCR = function (callback) {
-	cordova.exec(function(result){ callback(result); }, function(err){}, "Plugin", "startOCR", []);
-}
-
-OCRPlugin.install = function() {
-  if (!window.bmpocr) {
-    window.bmpocr = {};
-  }
-  window.bmpocr = new OCRPlugin();
-  return window.bmpocr.bmpocr;
+// Public
+OCRPluginExport.startOCR = function(callback) {
+    exec(function(result){callback(result);}, function(err){}, "Plugin", "startOCR", []);
 };
-cordova.addConstructor(OCRPlugin.install);
 
+module.exports = OCRPluginExport;
