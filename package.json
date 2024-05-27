@@ -1,9 +1,9 @@
 {
-  "name": "cordova-plugin-bm-ocr",
+  "name": "cordova-plugin-poocr",
   "version": "1.0.0",
-  "description": "BM OCR cordova plugin",
+  "description": "plugin",
   "cordova": {
-    "id": "cordova-plugin-bm-ocr",
+    "id": "cordova-plugin-poocr",
     "platforms": [
       "android",
       "ios"

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-        id="cordova-plugin-bm-ocr"
+        id="cordova-plugin-poocr"
         version="1.0.0">
 
-  <name>BmOcrPlugin</name>
+  <name>OCRPlugin</name>
 
   <engines>
     <engine name="cordova" version=">=3.4.0"/>
   </engines>
 
-  <asset src="www/ocr.js" target="js/ocr.js"/>
+  <asset src="www/poocr.js" target="js/poocr.js"/>
 
-  <js-module src="www/ocr.js" name="BmOcrPlugin">
-    <clobbers target="ocr" />
+  <js-module src="www/poocr.js" name="OCRPlugin">
+    <clobbers target="poocr" />
   </js-module>
 
   <platform name="android">
