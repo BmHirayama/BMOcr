@@ -9,7 +9,7 @@ OCRPlugin.install = function() {
   if (!window.plugins) {
     window.bmpocr = {};
   }
-  window.plugins.bmpocr = new OCRPlugin();
+  window.bmpocr = new OCRPlugin();
   return window.bmpocr.bmpocr;
 };
 cordova.addConstructor(OCRPlugin.install);
