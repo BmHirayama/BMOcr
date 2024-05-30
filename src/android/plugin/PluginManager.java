@@ -1,4 +1,4 @@
-package plugin;
+package jp.bluememe.plugin.ocr.plugin;
 
 import android.os.Bundle;
 

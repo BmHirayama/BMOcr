@@ -8,7 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import plugin.PluginManager;
+import jp.bluememe.plugin.ocr.plugin.PluginManager;
 
 public class Plugin extends CordovaPlugin {
 
