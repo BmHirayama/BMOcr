@@ -2,7 +2,7 @@ function BMOcrPlugin() {};
 
 // Reader
 BMOcrPlugin.prototype.startOCR = function (callback) {
-	cordova.exec(function(result){ callback(result); }, function(err){}, "Plugin", "startOCR", []);
+	cordova.exec(function(result){ callback(result); }, function(err){}, "OcrPlugin", "startOCR", []);
 };
 
 BMOcrPlugin.install = function() {
