@@ -36,6 +36,7 @@
   </platform>
 
   <platform name="ios">
+    <preference name="ios-XCBuildConfiguration-SWIFT_VERSION" value="4"/>
     <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
     <config-file target="config.xml" parent="/widget">
       <feature name="Plugin">
