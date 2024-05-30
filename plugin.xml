@@ -29,8 +29,8 @@
     </config-file>
     <hook type="after_prepare" src="src/android/hooks/after_prepare.js"/>
     <source-file src="src/android/Plugin.java" target-dir="src/jp/bluememe/plugin/ocr/"/>
-    <source-file src="src/android/plugin/PluginManager.java" target-dir="src/plugin/"/>
-    <source-file src="src/android/plugin/Permission.java" target-dir="src/plugin/"/>
+    <source-file src="src/android/plugin/PluginManager.java" target-dir="src/jp/bluememe/plugin/ocr/plugin/"/>
+    <source-file src="src/android/plugin/Permission.java" target-dir="src/jp/bluememe/plugin/ocr/plugin/"/>
     <framework src="src/android/yourfile.gradle" custom="true" type="gradleReference" />
     <source-file framework="true" src="src/android/libs/DriverCardOCRLibrary.aar" target-dir="libs"/>
   </platform>
