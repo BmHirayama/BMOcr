@@ -56,14 +56,6 @@ class OcrPlugin : CDVPlugin, OnOcrPluginManagerDelegate {
     }
     
     private func startOcr() {
-        let alert = UIAlertController(title: "BMTest", message: "startOcr", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-            self.test()
-        }))
-        viewController.present(alert, animated: true)
-    }
-    
-    private func test() {
         if (viewController == nil) {
             if (mOcrCallbackId != nil) {
                 let pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: ["errorCode": -1] )
