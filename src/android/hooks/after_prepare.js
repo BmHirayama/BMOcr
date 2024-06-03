@@ -58,12 +58,10 @@ module.exports = function (context) {
 };
 
 function setGradleProperties() {
-    const fs = require('fs');
-
     const PLUGIN_NAME = "cordova-plugin-androidx";
     const enableAndroidX = "android.useAndroidX=true";
     const enableJetifier = "android.enableJetifier=true";
-    const gradlePropertiesPath = "./platforms/android/gradle.properties";
+    const gradlePropertiesPath = path.resolve(platformPath, 'gradle.properties');
 
     let gradleProperties = fs.readFileSync(gradlePropertiesPath);
     if (gradleProperties) {
