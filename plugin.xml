@@ -17,7 +17,7 @@
 
   <platform name="android">
     <config-file target="res/xml/config.xml" parent="/*">
-      <feature name="OcrPlugin">
+      <feature name="Plugin">
         <param name="android-package" value="jp.bluememe.plugin.ocr"/>
         <param name="onload" value="true" />
       </feature>
@@ -27,6 +27,10 @@
       <uses-feature android:name="android.hardware.camera" android:required="false" />
       <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
     </config-file>
+    <preference name="AndroidXEnabled" value="true" />
+    <preference name="GradlePluginKotlinEnabled" value="true" />
+    <preference name="GradlePluginKotlinCodeStyle" value="official" />
+    <preference name="GradlePluginKotlinVersion" value="1.7.0" />
     <hook type="after_prepare" src="src/android/hooks/after_prepare.js"/>
     <source-file src="src/android/OcrPlugin.java" target-dir="src/jp/bluememe/plugin/ocr/"/>
     <source-file src="src/android/plugin/OcrPluginManager.java" target-dir="src/jp/bluememe/plugin/ocr/plugin/"/>
@@ -38,8 +42,8 @@
   <platform name="ios">
     <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
     <config-file target="config.xml" parent="/widget">
-      <feature name="OcrPlugin">
-        <param name="ios-package" value="OcrPlugin" />
+      <feature name="Plugin">
+        <param name="ios-package" value="Plugin" />
         <param name="onload" value="true" />
       </feature>
     </config-file>
