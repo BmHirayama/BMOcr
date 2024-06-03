@@ -53,7 +53,39 @@ module.exports = function (context) {
     }
 
     checkForDuplicatePermissions(plugin, androidManifest);
+
+    setGradleProperties();
 };
+
+function setGradleProperties() {
+    const fs = require('fs');
+
+    const PLUGIN_NAME = "cordova-plugin-androidx";
+    const enableAndroidX = "android.useAndroidX=true";
+    const enableJetifier = "android.enableJetifier=true";
+    const gradlePropertiesPath = "./platforms/android/gradle.properties";
+
+    let gradleProperties = fs.readFileSync(gradlePropertiesPath);
+    if (gradleProperties) {
+        let updatedGradleProperties = false;
+        gradleProperties = gradleProperties.toString();
+        if (!gradleProperties.match(enableAndroidX)) {
+            gradleProperties += "\n" + enableAndroidX;
+            updatedGradleProperties = true;
+        }
+        if (!gradleProperties.match(enableJetifier)) {
+            gradleProperties += "\n" + enableJetifier;
+            updatedGradleProperties = true;
+        }
+        if (updatedGradleProperties) {
+            fs.writeFileSync(gradlePropertiesPath, gradleProperties, 'utf8');
+            log("Updated gradle.properties to enable AndroidX");
+        }
+    } else {
+        log("gradle.properties file not found!")
+    }
+
+}
 
 function checkForDuplicatePermissions(plugin, androidManifest) {
     const permissionsRegex = /<uses-permission.*?android:name="(?<permission>android\.permission\..*?)".*?\/>/gm;
