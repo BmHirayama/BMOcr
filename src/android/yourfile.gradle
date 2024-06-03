@@ -1,6 +1,6 @@
 repositories{
     flatDir {
-        dirs 'src/main/libs'
+        dirs 'libs'
     }
 }
 
@@ -27,23 +27,5 @@ android {
         compose = true
         dataBinding = true
         viewBinding = true
-    }
-    buildTypes {
-        release {
-            // blah blah
-            matchingFallbacks = ['release']
-        }
-        enterprise {
-            // blah blah
-            matchingFallbacks = ['release']
-        }
-        debug {
-            // blah blah
-            matchingFallbacks = ['debug']
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
