@@ -79,10 +79,9 @@ function setGradleProperties() {
         }
         if (updatedGradleProperties) {
             fs.writeFileSync(gradlePropertiesPath, gradleProperties, 'utf8');
-            log("Updated gradle.properties to enable AndroidX");
         }
     } else {
-        log("gradle.properties file not found!")
+//        log("gradle.properties file not found!")
     }
 
 }
