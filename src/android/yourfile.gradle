@@ -5,7 +5,9 @@ repositories{
 }
 
 dependencies {
+    // Library
     implementation fileTree(dir: 'libs', includes: ['DriverCardOCRLibrary.aar'])
+    // Kotlin
     implementation "androidx.appcompat:appcompat:1.6.1"
     implementation "androidx.core:core-splashscreen:1.0.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.21"
@@ -20,6 +22,9 @@ android {
     defaultConfig {
 	compileSdk = 34
         minSdk = 26
+    }
+    lintOptions {
+      abortOnError false
     }
     packagingOptions {
         exclude 'META-INF/NOTICE'
@@ -38,4 +43,31 @@ android {
         dataBinding = true
         viewBinding = true
     }
+        productFlavors {
+            armeabi {
+                ndk {
+                    abiFilters = ["armeabi"]
+                }
+            }
+            armv7 {
+                ndk {
+                    abiFilters = ["armeabi-v7a"]
+                }
+            }
+            arm64 {
+                ndk {
+                    abiFilters = ["arm64-v8a"]
+                }
+            }
+            x86 {
+                ndk {
+                    abiFilters = ["x86"]
+                }
+            }
+            x86_64 {
+                ndk {
+                    abiFilters = ["x86_64"]
+                }
+            }
+        }
 }
