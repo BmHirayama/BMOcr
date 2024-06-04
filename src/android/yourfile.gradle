@@ -43,6 +43,7 @@ android {
         dataBinding = true
         viewBinding = true
     }
+    flavorDimensions "default"
         productFlavors {
             armeabi {
                 ndk {
