@@ -20,7 +20,7 @@
       <preference name="GradlePluginKotlinEnabled" value="true" />
       <preference name="GradlePluginKotlinCodeStyle" value="official" />
       <preference name="GradlePluginKotlinVersion" value="1.7.21" />
-      <feature name="Plugin">
+      <feature name="OcrPlugin">
         <param name="android-package" value="jp.bluememe.plugin.ocr"/>
         <param name="onload" value="true" />
       </feature>
@@ -42,8 +42,8 @@
   <platform name="ios">
     <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
     <config-file target="config.xml" parent="/widget">
-      <feature name="Plugin">
-        <param name="ios-package" value="Plugin" />
+      <feature name="OcrPlugin">
+        <param name="ios-package" value="OcrPlugin" />
         <param name="onload" value="true" />
       </feature>
     </config-file>
