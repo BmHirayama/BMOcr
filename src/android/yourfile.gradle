@@ -44,4 +44,18 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+    buildTypes {
+      release {
+        // blah blah
+        matchingFallbacks = ['release']
+      }
+      enterprise {
+        // blah blah
+        matchingFallbacks = ['release']
+      }
+      debug {
+        // blah blah
+        matchingFallbacks = ['debug']
+      }
+    }
 }
