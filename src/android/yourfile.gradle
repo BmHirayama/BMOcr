@@ -7,10 +7,6 @@ repositories{
 dependencies {
     // Library
     implementation fileTree(dir: 'libs', includes: ['DriverCardOCRLibrary.aar'])
-    // Kotlin
-    implementation "androidx.appcompat:appcompat:1.6.1"
-    implementation "androidx.core:core-splashscreen:1.0.0"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.21"
     implementation "com.google.android.material:material:1.12.0"
     implementation "org.pytorch:pytorch_android_torchvision:1.13.0"
     implementation "com.quickbirdstudios:opencv:4.5.2"
@@ -26,27 +22,26 @@ android {
             useSupportLibrary = true
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+    lintOptions {
+      abortOnError false
+    }
+    packagingOptions {
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        pickFirst("**/*.so")
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget =  '1.8'
     }
     buildFeatures {
         compose = true
         dataBinding = true
         viewBinding = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
-    packagingOptions {
-        pickFirst("**/*.so")
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
     }
 }
