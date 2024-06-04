@@ -22,53 +22,31 @@ android {
     defaultConfig {
 	compileSdk = 34
         minSdk = 26
-    }
-    lintOptions {
-      abortOnError false
-    }
-    packagingOptions {
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/LICENSE'
-        pickFirst("**/*.so")
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
     compileOptions {
-        sourceCompatibility '1.8'
-        targetCompatibility '1.8'
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget =  '1.8'
+        jvmTarget = "1.8"
     }
     buildFeatures {
         compose = true
         dataBinding = true
         viewBinding = true
     }
-    flavorDimensions "default"
-        productFlavors {
-            armeabi {
-                ndk {
-                    abiFilters = ["armeabi"]
-                }
-            }
-            armv7 {
-                ndk {
-                    abiFilters = ["armeabi-v7a"]
-                }
-            }
-            arm64 {
-                ndk {
-                    abiFilters = ["arm64-v8a"]
-                }
-            }
-            x86 {
-                ndk {
-                    abiFilters = ["x86"]
-                }
-            }
-            x86_64 {
-                ndk {
-                    abiFilters = ["x86_64"]
-                }
-            }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
+    }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
+    }
+    packagingOptions {
+        pickFirst("**/*.so")
+    }
 }
