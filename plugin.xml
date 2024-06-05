@@ -20,6 +20,7 @@
       <preference name="GradlePluginKotlinEnabled" value="true" />
       <preference name="GradlePluginKotlinCodeStyle" value="official" />
       <preference name="GradlePluginKotlinVersion" value="1.7.21" />
+      <preference name="AndroidXEnabled" value="true" />
       <feature name="OcrPlugin">
         <param name="android-package" value="jp.bluememe.plugin.ocr"/>
         <param name="onload" value="true" />
