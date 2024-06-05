@@ -61,6 +61,7 @@ function setGradleProperties() {
     const PLUGIN_NAME = "cordova-plugin-androidx";
     const jvmargs = "org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8";
     const enableAndroidX = "android.useAndroidX=true";
+    const setJetifier = "android.enableJetifier=true";
     const style = "kotlin.code.style=official";
     const nonTransitiveRClass = "android.nonTransitiveRClass=true";
     const gradlePropertiesPath = "./platforms/android/gradle.properties";
@@ -75,6 +76,10 @@ function setGradleProperties() {
         }
         if (!gradleProperties.match(enableAndroidX)) {
             gradleProperties += "\n" + enableAndroidX;
+            updatedGradleProperties = true;
+        }
+        if (!gradleProperties.match(setJetifier)) {
+            gradleProperties += "\n" + setJetifier;
             updatedGradleProperties = true;
         }
         if (!gradleProperties.match(style)) {
