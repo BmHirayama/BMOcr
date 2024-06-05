@@ -1,74 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-        id="cordova-plugin-iccard-reader"
+        id="cordova-plugin-bm-pocr"
         version="1.0.0">
 
-  <name>ICCardReader</name>
+  <name>BMOcr</name>
 
   <engines>
     <engine name="cordova" version=">=3.4.0"/>
   </engines>
 
-  <asset src="www/iccardreader.js" target="js/iccardreader.js"/>
+  <asset src="www/bmpocr.js" target="js/bmpocr.js"/>
 
-  <js-module src="www/iccardreader.js" name="ICCardReader">
-    <clobbers target="iccardreader" />
+  <js-module src="www/bmpocr.js" name="BMOcr">
+    <clobbers target="bmpocr" />
   </js-module>
 
   <platform name="android">
     <config-file target="res/xml/config.xml" parent="/*">
-      <feature name="Plugin">
-        <param name="android-package" value="jp.bluememe.plugin.iccardreader.Plugin"/>
+      <preference name="GradlePluginKotlinEnabled" value="true" />
+      <preference name="GradlePluginKotlinCodeStyle" value="official" />
+      <preference name="GradlePluginKotlinVersion" value="1.7.21" />
+      <preference name="AndroidXEnabled" value="true" />
+      <feature name="OcrPlugin">
+        <param name="android-package" value="jp.bluememe.plugin.ocr.OcrPlugin"/>
         <param name="onload" value="true" />
       </feature>
     </config-file>
-    <config-file target="AndroidManifest.xml" parent="/manifest">
-      <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30" />
-      <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:maxSdkVersion="30" />
-      <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-      <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" android:minSdkVersion="31" />
-      <uses-permission android:name="android.permission.BLUETOOTH_SCAN" android:minSdkVersion="31" android:usesPermissionFlags="neverForLocation" />
-      <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" android:minSdkVersion="31" />
-      <uses-feature android:name="android.hardware.bluetooth_le" required="true" />
-    </config-file>
-    <hook type="after_prepare" src="hooks/after_prepare.js"/>
-    <source-file src="src/android/Plugin.java" target-dir="src/jp/bluememe/plugin/iccardreader"/>
-    <source-file src="src/android/plugin/PluginManager.java" target-dir="src/plugin/"/>
-    <source-file src="src/android/plugin/abc/ABCPluginManager.java" target-dir="src/plugin/abc"/>
-    <source-file src="src/android/plugin/abc/BluetoothTerminalHelper.java" target-dir="src/plugin/abc"/>
-    <source-file src="src/android/plugin/abc/Util.java" target-dir="src/plugin/abc"/>
-    <source-file src="src/android/plugin/acs/ACSPluginManager.java" target-dir="src/plugin/acs"/>
-    <source-file src="src/android/plugin/acs/CardStateMonitor.java" target-dir="src/plugin/acs"/>
+
+    <hook type="after_prepare" src="src/android/hooks/after_prepare.js"/>
+    <source-file src="src/android/OcrPlugin.java" target-dir="src/jp/bluememe/plugin/ocr/"/>
+    <source-file src="src/android/plugin/OcrPluginManager.java" target-dir="src/jp/bluememe/plugin/ocr/plugin/"/>
+    <source-file src="src/android/plugin/Permission.java" target-dir="src/jp/bluememe/plugin/ocr/plugin/"/>
     <framework src="src/android/yourfile.gradle" custom="true" type="gradleReference" />
-    <source-file framework="true" src="src/android/libs/abcBluetoothTerminalFactory-1.4.5-release.aar" target-dir="libs"/>
-    <source-file framework="true" src="src/android/libs/acssmcio-0.5.4.aar" target-dir="libs"/>
-    <source-file framework="true" src="src/android/libs/smartcardio-0.1.4.aar" target-dir="libs"/>
+    <source-file framework="true" src="src/android/libs/DriverCardOCRLibrary.aar" target-dir="libs"/>
   </platform>
 
   <platform name="ios">
     <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
     <config-file target="config.xml" parent="/widget">
-      <feature name="Plugin">
-        <param name="ios-package" value="Plugin" />
+      <feature name="OcrPlugin">
+        <param name="ios-package" value="OcrPlugin" />
         <param name="onload" value="true" />
       </feature>
     </config-file>
-    <config-file target="*-Info.plist" parent="NSBluetoothAlwaysUsageDescription">
-	<string>ICカード読み取り機能で使用します。</string>
+    <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
+	    <string>カードの認識に使用します。</string>
     </config-file>
-    <source-file src="src/ios/Plugin.swift" target-dir="ICCardReader" />
-    <source-file src="src/ios/PluginManager.swift" target-dir="ICCardReader" />
-    <source-file src="src/ios/abc/ABCPluginManager.swift" target-dir="ICCardReader/abc" />
-    <source-file src="src/ios/abc/ABCCardTerminalMonitor.swift" target-dir="ICCardReader/abc" />
-    <source-file src="src/ios/abc/CardTerminalToMonitor.swift" target-dir="ICCardReader/abc" />
-    <source-file src="src/ios/abc/Options.swift" target-dir="ICCardReader/abc" />
-    <source-file src="src/ios/acs/ACSPluginManager.swift" target-dir="ICCardReader/acs" />
-    <source-file src="src/ios/acs/CardStateMonitor.swift" target-dir="ICCardReader/acs" />
-    <source-file src="src/ios/acs/Hex.swift" target-dir="ICCardReader/acs" />
-    <framework src="src/ios/framework/ABCSmartCardIO.xcframework" custom="true" embed="true" />
-    <framework src="src/ios/framework/ACSSmartCardIO.xcframework" custom="true" embed="true" />
-    <framework src="src/ios/framework/SmartCardIO.xcframework" custom="true" embed="true" />
+    <source-file src="src/ios/OcrPlugin.swift" target-dir="BMOcr" />
+    <source-file src="src/ios/OcrPluginManager.swift" target-dir="BMOcr" />
+    <framework src="src/ios/framework/DriverCardOCRLibrary.framework" custom="true" embed="true" />
   </platform>
 
 </plugin>
