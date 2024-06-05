@@ -27,12 +27,7 @@
       </feature>
     </config-file>
 
-    <config-file target="AndroidManifest.xml" parent="/manifest">
-      <uses-permission android:name="android.permission.INTERNET" />
-      <uses-permission android:name="android.permission.CAMERA" />
-      <uses-feature android:name="android.hardware.camera" android:required="false" />
-      <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
-    </config-file>
+
 
     <hook type="after_prepare" src="src/android/hooks/after_prepare.js"/>
     <source-file src="src/android/OcrPlugin.java" target-dir="src/jp/bluememe/plugin/ocr/"/>
