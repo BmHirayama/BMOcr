@@ -34,6 +34,13 @@
       <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
     </config-file>
 
+    <framework src="androidx.core:1.13.1" />
+    <framework src="androidx.lifecycle:2.7.0" />
+    <framework src="androidx.activity:1.9.0" />
+    <framework src="androidx.compose:2023.08.00" />
+    <framework src="androidx.compose.ui" />
+    <framework src="androidx.compose.material3" />
+
     <hook type="after_prepare" src="src/android/hooks/after_prepare.js"/>
     <source-file src="src/android/OcrPlugin.java" target-dir="src/jp/bluememe/plugin/ocr/"/>
     <source-file src="src/android/plugin/OcrPluginManager.java" target-dir="src/jp/bluememe/plugin/ocr/plugin/"/>
