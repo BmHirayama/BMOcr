@@ -5,10 +5,9 @@ repositories{
 }
 
 dependencies {
-    implementation "androidx.core:1.13.1"
-
-    implementation "androidx.lifecycle:2.7.0"
-    implementation "androidx.activity:1.9.0"
+    implementation "androidx.core:core-ktx:1.13.1"
+    // implementation "androidx.lifecycle:2.7.0"
+    // implementation "androidx.activity:1.9.0"
 
     // Library
     implementation fileTree(dir: 'libs', includes: ['DriverCardOCRLibrary.aar'])
