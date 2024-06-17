@@ -13,6 +13,7 @@
     <platform name="android">
         <source-file src="src/android/MyPlugin.java" target-dir="src/main/java/com/example/myplugin" />
         <framework src="src/android/driver.gradle" custom="true" type="gradleReference" />
+
         <resource-file src="aar/DriverCardOCRLibrary.aar" target="libs/DriverCardOCRLibrary.aar" />
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="MyPlugin" >
@@ -20,22 +21,6 @@
                 <param name="onload" value="true" />
             </feature>
         </config-file>
-    </platform>
-
-    <platform name="ios">
-        <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
-        <config-file target="config.xml" parent="/widget">
-            <feature name="MyPlugin">
-                <param name="ios-package" value="MyPlugin" />
-                <param name="onload" value="true" />
-            </feature>
-        </config-file>
-        <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
-	    <string>カードの認識に使用します。</string>
-        </config-file>
-        <source-file src="src/ios/MyPlugin.swift" target-dir="MyPlugin" />
-        <source-file src="src/ios/OcrPluginManager.swift" target-dir="MyPlugin" />
-        <framework src="src/ios/framework/DriverCardOCRLibrary.framework" custom="true" embed="true" />
     </platform>
     
     <js-module src="www/MyPlugin.js" name="MyPlugin">

@@ -1,8 +1,8 @@
 var exec = require('cordova/exec');
 
 var MyPlugin = {
-    coolMethod: function(success) {
-        exec(success, function(err){}, "MyPlugin", "coolMethod", "message");
+    coolMethod: function(success, error) {
+        exec(success, error, "MyPlugin", "coolMethod", [arg0]);
     }
 };
 
