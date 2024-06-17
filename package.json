@@ -1,16 +1,17 @@
 {
-  "name": "my-plugin",
+  "name": cordova-plugin-bm-pocr",
   "version": "1.0.0",
   "description": "A Cordova plugin using an Android AAR library",
   "cordova": {
-    "id": "com.example.myplugin",
+    "id": "cordova-plugin-bm-pocr",
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ]
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/example/my-plugin.git"
+    "url": "https://github.com/pokecom-pj/ocr_library"
   },
   "keywords": [
     "cordova",
