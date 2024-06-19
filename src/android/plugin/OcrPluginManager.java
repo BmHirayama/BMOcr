@@ -1,5 +1,6 @@
 package jp.bluememe.plugin.ocr.plugin;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -31,7 +32,7 @@ public class OcrPluginManager {
     }
 
     // MARK: - Accesser
-    public void start (AppCompatActivity activity, OnOcrPluginManagerListener listener) {
+    public void start (Activity activity, OnOcrPluginManagerListener listener) {
         Log.i("DEBUG_LOG", "B00");
         doStartScan(activity);
         // mListener = listener;
@@ -56,7 +57,7 @@ public class OcrPluginManager {
     }
 
     // MARK: - Function
-    private void doStartScan(AppCompatActivity activity) {
+    private void doStartScan(Activity activity) {
         Log.i("DEBUG_LOG", "B03");
         DriverCardOCR.Companion.getShared().doScanCard(activity, new Function3<DriverCardOCR.RESULT, Bundle, DriverCardOCR.SCAN_TYPE, Unit>() {
             @Override
