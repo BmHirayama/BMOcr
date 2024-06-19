@@ -2,7 +2,7 @@ var exec = require('cordova/exec');
 
 var MyPlugin = {
     coolMethod: function(success, error) {
-        exec(success, error, "MyPlugin", "coolMethod", "");
+        exec(success, error, "MyPlugin", "coolMethod", []);
     }
 };
 

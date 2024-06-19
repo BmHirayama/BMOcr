@@ -18,14 +18,13 @@ public class MyPlugin extends CordovaPlugin {
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         this.callbackContext = callbackContext;
         if (action.equals("coolMethod")) {
-            String message = args.getString(0);
-            this.coolMethod(message, callbackContext);
+            this.coolMethod(callbackContext);
             return true;
         }
         return false;
     }
 
-    private void coolMethod(String message, CallbackContext callbackContext) {
+    private void coolMethod(CallbackContext callbackContext) {
         cordova.setActivityResultCallback(this);
         AppCompatActivity activity = (AppCompatActivity) cordova.getActivity();
         DriverCardOCR.Companion.getShared().doScanCard(activity, new Function3<RESULT, Bundle, SCAN_TYPE, Unit>() {
