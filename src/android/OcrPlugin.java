@@ -85,9 +85,12 @@ public class OcrPlugin extends CordovaPlugin {
                 }
             });
             builder.create().show();
-            if (listener != null) {
-                listener.onResult(false);
+            
+            try {
+                resultJson.put("errorCode", -1);
+            } catch (JSONException e) {
             }
+            mOcrCallbackId.error(resultJson);
         });
         requestPermission.launch(dPermission);
     }
