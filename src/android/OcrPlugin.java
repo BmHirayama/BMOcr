@@ -85,7 +85,8 @@ public class OcrPlugin extends CordovaPlugin {
                 }
             });
             builder.create().show();
-            
+
+            JSONObject resultJson = new JSONObject();
             try {
                 resultJson.put("errorCode", -1);
             } catch (JSONException e) {
