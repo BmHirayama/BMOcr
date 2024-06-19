@@ -6,7 +6,7 @@
   <name>BMOcr</name>
 
   <engines>
-    <engine name="cordova" version=">=3.4.0"/>
+    <engine name="cordova" version=">=10.0.0"/>
   </engines>
 
   <asset src="www/bmpocr.js" target="js/bmpocr.js"/>
