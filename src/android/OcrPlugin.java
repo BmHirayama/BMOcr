@@ -55,50 +55,51 @@ public class OcrPlugin extends CordovaPlugin {
     }
 
     private void start() {
-        cordova.getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                AppCompatActivity activity = (AppCompatActivity)cordova.getActivity();
-                if (isPermissionGranted(activity)) {
-                    Log.i("DEBUG_LOG", "C00");
-                    startOcr();
-                    return;
-                }
-                Log.i("DEBUG_LOG", "C01");
-                ActivityResultLauncher<String[]> requestPermission = activity.registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), result -> {
-                    Log.i("DEBUG_LOG", "C02");
-                    if (!result.values().contains(false)) {
-                        startOcr();
-                        return;
-                    }
-                    Log.i("DEBUG_LOG", "C03");
-                    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-                    builder.setTitle("警告");
-                    builder.setMessage("カメラアクセスの許可が必要です");
-                    builder.setCancelable(false);
-                    builder.setNegativeButton("設定へ", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent intent = new Intent();
-                            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                            intent.setData(Uri.fromParts("package", activity.getApplicationContext().getPackageName(), null
-                            ));
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            activity.startActivity(intent);
-                        }
-                    });
-                    builder.create().show();
+        startOcr();
+        // cordova.getActivity().runOnUiThread(new Runnable() {
+        //     @Override
+        //     public void run() {
+        //         AppCompatActivity activity = (AppCompatActivity)cordova.getActivity();
+        //         if (isPermissionGranted(activity)) {
+        //             Log.i("DEBUG_LOG", "C00");
+        //             startOcr();
+        //             return;
+        //         }
+        //         Log.i("DEBUG_LOG", "C01");
+        //         ActivityResultLauncher<String[]> requestPermission = activity.registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), result -> {
+        //             Log.i("DEBUG_LOG", "C02");
+        //             if (!result.values().contains(false)) {
+        //                 startOcr();
+        //                 return;
+        //             }
+        //             Log.i("DEBUG_LOG", "C03");
+        //             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        //             builder.setTitle("警告");
+        //             builder.setMessage("カメラアクセスの許可が必要です");
+        //             builder.setCancelable(false);
+        //             builder.setNegativeButton("設定へ", new DialogInterface.OnClickListener() {
+        //                 @Override
+        //                 public void onClick(DialogInterface dialogInterface, int i) {
+        //                     Intent intent = new Intent();
+        //                     intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        //                     intent.setData(Uri.fromParts("package", activity.getApplicationContext().getPackageName(), null
+        //                     ));
+        //                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //                     activity.startActivity(intent);
+        //                 }
+        //             });
+        //             builder.create().show();
 
-                    JSONObject resultJson = new JSONObject();
-                    try {
-                        resultJson.put("errorCode", -1);
-                    } catch (JSONException e) {
-                    }
-                    mOcrCallbackId.error(resultJson);
-                });
-                requestPermission.launch(dPermission);
-            }
-        });
+        //             JSONObject resultJson = new JSONObject();
+        //             try {
+        //                 resultJson.put("errorCode", -1);
+        //             } catch (JSONException e) {
+        //             }
+        //             mOcrCallbackId.error(resultJson);
+        //         });
+        //         requestPermission.launch(dPermission);
+        //     }
+        // });
     }
 
     private void startOcr() {
