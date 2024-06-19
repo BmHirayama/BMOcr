@@ -33,21 +33,22 @@ public class OcrPluginManager {
     // MARK: - Accesser
     public void start (AppCompatActivity activity, OnOcrPluginManagerListener listener) {
         Log.i("DEBUG_LOG", "B00");
-        mListener = listener;
-        Permission.checkPermission(activity, new OnPermissionListener() {
-            @Override
-            public void onResult(boolean result) {
-                if (result) {
-                    Log.i("DEBUG_LOG", "B01");
-                    doStartScan(activity);
-                } else {
-                    Log.i("DEBUG_LOG", "B02");
-                    if (mListener != null) {
-                        mListener.onResult(OcrPluginManager.this, CODE_AUTHROIZE, null);
-                    }
-                }
-            }
-        });
+        doStartScan(activity);
+        // mListener = listener;
+        // Permission.checkPermission(activity, new OnPermissionListener() {
+        //     @Override
+        //     public void onResult(boolean result) {
+        //         if (result) {
+        //             Log.i("DEBUG_LOG", "B01");
+        //             doStartScan(activity);
+        //         } else {
+        //             Log.i("DEBUG_LOG", "B02");
+        //             if (mListener != null) {
+        //                 mListener.onResult(OcrPluginManager.this, CODE_AUTHROIZE, null);
+        //             }
+        //         }
+        //     }
+        // });
     }
 
     public void stop() {

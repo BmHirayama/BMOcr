@@ -13,6 +13,9 @@ import jp.bluememe.plugin.ocr.plugin.OcrPluginManager;
 
 public class OcrPlugin extends CordovaPlugin {
 
+    // MARK: - Define
+    private static final String[] dPermission = { Manifest.permission.CAMERA };
+
     // MARK: - Callback
     private CallbackContext mOcrCallbackId = null;
 
@@ -25,7 +28,7 @@ public class OcrPlugin extends CordovaPlugin {
         if (action.equals("startOCR")) {
             Log.i("DEBUG_LOG", "A00");
             mOcrCallbackId = callbackContext;
-            startOcr();
+            start();
             return true;
         }
         return false;
@@ -37,6 +40,44 @@ public class OcrPlugin extends CordovaPlugin {
             mOcrPluginManager = new OcrPluginManager();
         }
         return mOcrPluginManager;
+    }
+
+    private void start() {
+        AppCompatActivity activity = (AppCompatActivity)cordova.getActivity();
+        if (isPermissionGranted(activity)) {
+            Log.i("DEBUG_LOG", "C00");
+            startOcr();
+            return;
+        }
+        Log.i("DEBUG_LOG", "C01");
+        ActivityResultLauncher<String[]> requestPermission = activity.registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), result -> {
+            Log.i("DEBUG_LOG", "C02");
+            if (!result.values().contains(false)) {
+                startOcr();
+                return;
+            }
+            Log.i("DEBUG_LOG", "C03");
+            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+            builder.setTitle("警告");
+            builder.setMessage("カメラアクセスの許可が必要です");
+            builder.setCancelable(false);
+            builder.setNegativeButton("設定へ", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Intent intent = new Intent();
+                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    intent.setData(Uri.fromParts("package", activity.getApplicationContext().getPackageName(), null
+                    ));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    activity.startActivity(intent);
+                }
+            });
+            builder.create().show();
+            if (listener != null) {
+                listener.onResult(false);
+            }
+        });
+        requestPermission.launch(dPermission);
     }
 
     private void startOcr() {
@@ -86,5 +127,15 @@ public class OcrPlugin extends CordovaPlugin {
     private void ocrStop() {
         getOcrPluginManager().stop();
         mOcrPluginManager = null;
+    }
+
+    private static boolean isPermissionGranted(AppCompatActivity activity) {
+        for (String permission: dPermission) {
+            int checkPermission = ContextCompat.checkSelfPermission(activity, permission);
+            if (checkPermission != PackageManager.PERMISSION_GRANTED) {
+                return false;
+            }
+        }
+        return true;
     }
 }
