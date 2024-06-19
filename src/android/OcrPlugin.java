@@ -1,6 +1,7 @@
 package jp.bluememe.plugin.ocr;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;

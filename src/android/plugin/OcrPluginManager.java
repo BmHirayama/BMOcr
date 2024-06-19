@@ -1,6 +1,7 @@
 package jp.bluememe.plugin.ocr.plugin;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
