@@ -22,6 +22,7 @@ public class OcrPlugin extends CordovaPlugin {
     public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
         Context applicationContext = cordova.getActivity().getApplicationContext();
         if (action.equals("startOCR")) {
+            Log.i("DEBUG_LOG", "A00");
             mOcrCallbackId = callbackContext;
             startOcr();
             return true;
@@ -38,9 +39,11 @@ public class OcrPlugin extends CordovaPlugin {
     }
 
     private void startOcr() {
+        Log.i("DEBUG_LOG", "A01");
         getOcrPluginManager().start(cordova.getActivity(), new OcrPluginManager.OnOcrPluginManagerListener() {
             @Override
             public void onResult(OcrPluginManager sender, int code, OcrPluginManager.OcrResultInfo result) {
+                Log.i("DEBUG_LOG", "A02");
                 ocrStop();
                 JSONObject resultJson = new JSONObject();
                 if (code == OcrPluginManager.CODE_SUCCESS) {

@@ -25,19 +25,23 @@ public class Permission {
     // MARK: - Accesser
     public static void checkPermission(AppCompatActivity activity, OnPermissionListener listener) {
         if (isPermissionGranted(activity)) {
+            Log.i("DEBUG_LOG", "C00");
             if (listener != null) {
                 listener.onResult(true);
             }
             return;
         }
 
+        Log.i("DEBUG_LOG", "C01");
         ActivityResultLauncher<String[]> requestPermission = activity.registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), result -> {
+            Log.i("DEBUG_LOG", "C02");
             if (!result.values().contains(false)) {
                 if (listener != null) {
                     listener.onResult(true);
                 }
                 return;
             }
+            Log.i("DEBUG_LOG", "C03");
             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
             builder.setTitle("警告");
             builder.setMessage("カメラアクセスの許可が必要です");

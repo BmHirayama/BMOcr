@@ -31,13 +31,16 @@ public class OcrPluginManager {
 
     // MARK: - Accesser
     public void start (AppCompatActivity activity, OnOcrPluginManagerListener listener) {
+        Log.i("DEBUG_LOG", "B00");
         mListener = listener;
         Permission.checkPermission(activity, new OnPermissionListener() {
             @Override
             public void onResult(boolean result) {
                 if (result) {
+                    Log.i("DEBUG_LOG", "B01");
                     doStartScan(activity);
                 } else {
+                    Log.i("DEBUG_LOG", "B02");
                     if (mListener != null) {
                         mListener.onResult(OcrPluginManager.this, CODE_AUTHROIZE, null);
                     }
@@ -52,10 +55,13 @@ public class OcrPluginManager {
 
     // MARK: - Function
     private void doStartScan(AppCompatActivity activity) {
+        Log.i("DEBUG_LOG", "B03");
         DriverCardOCR.Companion.getShared().doScanCard(activity, new Function3<DriverCardOCR.RESULT, Bundle, DriverCardOCR.SCAN_TYPE, Unit>() {
             @Override
             public Unit invoke(DriverCardOCR.RESULT result, Bundle bundle, DriverCardOCR.SCAN_TYPE scanType) {
+                Log.i("DEBUG_LOG", "B04");
                 if (result == DriverCardOCR.RESULT.SUCCESS) {
+                    Log.i("DEBUG_LOG", "B05");
                     if (mListener != null) {
                         OcrResultInfo info = new OcrResultInfo();
                         if (scanType == DriverCardOCR.SCAN_TYPE.DriverCard) {
