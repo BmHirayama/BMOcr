@@ -11,7 +11,6 @@
     </engines>
     
     <platform name="android">
-        <hook type="after_prepare" src="src/android/hooks/after_prepare.js"/>
         <source-file src="src/android/MyPlugin.java" target-dir="src/main/java/com/example/myplugin" />
         <framework src="src/android/driver.gradle" custom="true" type="gradleReference" />
 
