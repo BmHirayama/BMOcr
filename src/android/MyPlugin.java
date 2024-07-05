@@ -36,11 +36,19 @@ public class MyPlugin extends CordovaPlugin {
         DriverCardOCR.Companion.getShared().doScanCard(activity, new Function3<RESULT, Bundle, SCAN_TYPE, Unit>() {
             @Override
             public Unit invoke(RESULT result, Bundle resultData, SCAN_TYPE scanType) {
-                Log.i("MyPlugin", "resultData: " + resultData.toString());
-                callbackContext.success(resultData.toString());
+                analyzeInfo(result, resultData, scanType);
                 return Unit.INSTANCE;
             }
         });
+    }
+
+    // Custom
+    private void analyzeInfo(RESULT result, Bundle resultData, SCAN_TYPE scanType) {
+        Log.i("MyPlugin", "resultData: " + resultData.toString());
+
+
+
+        callbackContext.success(resultData.toString());
     }
 }
 
