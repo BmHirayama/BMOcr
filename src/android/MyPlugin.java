@@ -37,7 +37,7 @@ public class MyPlugin extends CordovaPlugin {
             @Override
             public Unit invoke(RESULT result, Bundle resultData, SCAN_TYPE scanType) {
                 Log.i("MyPlugin", "resultData: " + resultData.toString());
-                callbackContext.success("resultData");
+                callbackContext.success(resultData.toString());
                 return Unit.INSTANCE;
             }
         });
