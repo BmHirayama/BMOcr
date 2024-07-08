@@ -45,10 +45,46 @@ public class MyPlugin extends CordovaPlugin {
     // Custom
     private void analyzeInfo(RESULT result, Bundle resultData, SCAN_TYPE scanType) {
         Log.i("MyPlugin", "resultData: " + resultData.toString());
-
-
-
-        callbackContext.success(resultData.toString());
+        JSONObject resultJson = new JSONObject();
+        switch (scanType) {
+            case SCAN_TYPE.DriverCard:
+            {
+                try {
+                    resultJson.put("errorCode", "0");
+                    resultJson.put("type", "1");
+                    resultJson.put("name", "");
+                    resultJson.put("gender", "");
+                    resultJson.put("address", "");
+                    resultJson.put("birthdate", "");
+                } catch (JSONException e) {}
+                break;
+            }
+            case SCAN_TYPE.ZairyuCard:
+            {
+                try {
+                    resultJson.put("errorCode", "0");
+                    resultJson.put("type", "3");
+                    resultJson.put("name", "");
+                    resultJson.put("gender", "");
+                    resultJson.put("address", "");
+                    resultJson.put("birthdate", "");
+                } catch (JSONException e) {}
+                break;
+            }
+            case SCAN_TYPE.MyNumberCard:
+            {
+                try {
+                    resultJson.put("errorCode", "0");
+                    resultJson.put("type", "2");
+                    resultJson.put("name", "");
+                    resultJson.put("gender", "");
+                    resultJson.put("address", "");
+                    resultJson.put("birthdate", "");
+                } catch (JSONException e) {}
+                break;
+            }
+        }
+        callbackContext.success(resultJson);
     }
 }
 
