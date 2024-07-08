@@ -56,28 +56,55 @@ public class MyPlugin extends CordovaPlugin {
             try {
                 resultJson.put("errorCode", 0);
                 resultJson.put("type", 1);
-                resultJson.put("name", "");
+                if (resultData.containsKey("姓名")) {
+                    resultJson.put("name", resultData.getString("姓名", ""));
+                }
+                if (resultData.containsKey("住所")) {
+                    resultJson.put("address", resultData.getString("住所", ""));
+                }
+                if (resultData.containsKey("生年月日")) {
+                    resultJson.put("birthdate", resultData.getString("生年月日", "").replace("生", ""));
+                }
                 resultJson.put("gender", "");
-                resultJson.put("address", "");
-                resultJson.put("birthdate", "");
             } catch (JSONException e) {}
         } else if (scanType == DriverCardOCR.SCAN_TYPE.ZairyuCard) {
             try {
                 resultJson.put("errorCode", 0);
                 resultJson.put("type", 3);
-                resultJson.put("name", "");
-                resultJson.put("gender", "");
-                resultJson.put("address", "");
-                resultJson.put("birthdate", "");
+                if (resultData.containsKey("氏名")) {
+                    resultJson.put("name", resultData.getString("氏名", ""));
+                }
+                if (resultData.containsKey("住所")) {
+                    resultJson.put("address", resultData.getString("住所", ""));
+                }
+                if (resultData.containsKey("生年月日")) {
+                    resultJson.put("birthdate", resultData.getString("生年月日", "").replace("生", ""));
+                }
+                if (resultData.containsKey("性別")) {
+                    resultJson.put("gender", resultData.getString("性別", ""));
+                }
             } catch (JSONException e) {}
         } else if (scanType == DriverCardOCR.SCAN_TYPE.MyNumberCard) {
             try {
                 resultJson.put("errorCode", 0);
                 resultJson.put("type", 2);
-                resultJson.put("name", "");
-                resultJson.put("gender", "");
-                resultJson.put("address", "");
-                resultJson.put("birthdate", "");
+                if (resultData.containsKey("氏名")) {
+                    resultJson.put("name", resultData.getString("氏名", ""));
+                }
+                String address = "";
+                if (resultData.containsKey("住所①")) {
+                    address += resultData.getString("住所①", "");
+                }
+                if (resultData.containsKey("住所②")) {
+                    address += resultData.getString("住所②", "");
+                }
+                resultJson.put("address", address);
+                if (resultData.containsKey("生年月日")) {
+                    resultJson.put("birthdate", resultData.getString("生年月日", "").replace("生", ""));
+                }
+                if (resultData.containsKey("性別")) {
+                    resultJson.put("gender", resultData.getString("性別", ""));
+                }
             } catch (JSONException e) {}
         }
         callbackContext.success(resultJson);
