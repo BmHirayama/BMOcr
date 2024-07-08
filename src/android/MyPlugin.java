@@ -43,7 +43,7 @@ public class MyPlugin extends CordovaPlugin {
 
     // Custom
     private void analyzeInfo(RESULT result, Bundle resultData, SCAN_TYPE scanType) {
-        Log.i("MyPlugin", "resultData: " + resultData.toString());
+        // Log.i("MyPlugin", "resultData: " + resultData.toString());
         JSONObject resultJson = new JSONObject();
         if (result != DriverCardOCR.RESULT.SUCCESS) {
             try {
