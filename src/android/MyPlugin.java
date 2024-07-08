@@ -1,8 +1,7 @@
 package com.example.myplugin;
 
 import org.apache.cordova.*;
-import org.json.JSONArray;
-import org.json.JSONException;
+import org.json.*;
 import jp.co.ip_consulting.drivercardocrlibrary.DriverCardOCR;
 import androidx.appcompat.app.AppCompatActivity;
 import jp.co.ip_consulting.drivercardocrlibrary.DriverCardOCR.RESULT;
@@ -11,7 +10,6 @@ import android.os.Bundle;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function3;
 import android.util.Log;
-import org.json.*;
 
 public class MyPlugin extends CordovaPlugin {
 
